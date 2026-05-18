@@ -28,11 +28,15 @@ public class UIPreguntaManager : MonoBehaviour
     {
         if (index == preguntaActual.indiceCorrecto)
         {
+            // Respuesta correcta: sumar puntos y continuar
+            PuntosManager.instancia?.AgregarPuntos(10);
             PlayerManager.instancia.mover = true;
             canvas.gameObject.SetActive(false);
         }
         else
         {
+            // Respuesta incorrecta: restar puntos, reiniciar posición y continuar
+            PuntosManager.instancia?.QuitarPuntos(5);
             PlayerManager.instancia.pasosRestantes = 1;
             PlayerManager.instancia.posicionPunto = 0;
             PlayerManager.instancia.mover = true;

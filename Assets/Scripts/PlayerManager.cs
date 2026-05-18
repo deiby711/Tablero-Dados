@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -73,6 +74,13 @@ public class PlayerManager : MonoBehaviour
         {
             transform.position = target.position;
             pasosRestantes--;
+
+            // Si llegamos al último punto del tablero, cargar la escena de victoria
+            if (posicionPunto >= camino.Length - 1)
+            {
+                SceneManager.LoadScene("You Win");
+                return;
+            }
 
             if (pasosRestantes > 0)
             {
